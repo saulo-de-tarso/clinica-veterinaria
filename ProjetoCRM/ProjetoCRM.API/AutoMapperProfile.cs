@@ -10,8 +10,9 @@ namespace ProjetoCRM.API
         //construtor
         public AutoMapperProfile()
         {
-            CreateMap<Clientes, GetClientesDto>(); //Mapeia os getclientesdto baseado nos clientes
-            CreateMap<AddClientesDto, Clientes>(); //Mapeia os clientes baseado no addclientesdto
+            CreateMap<Clientes, GetClienteDto>(); //Mapeia o getclientesdto baseado nos clientes
+            CreateMap<AddClienteDto, Clientes>(); //Mapeia os clientes baseado no addclientesdto
+            CreateMap<UpdateClienteDto, Clientes>(); //Mapeia os clientes baseado no addclientesdto
         }
     }
 }

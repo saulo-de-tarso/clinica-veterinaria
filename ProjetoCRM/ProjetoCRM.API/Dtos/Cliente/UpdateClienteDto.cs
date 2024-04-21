@@ -1,8 +1,9 @@
 ﻿namespace ProjetoCRM.API.Dtos.Cliente
 {
-    public class AddClientesDto
+    public class UpdateClienteDto
     {
-        //DTO para o POST de clientes do CRM, com suas propriedades Nome, cpf, endereço e e-mail. Id não é nessário, pois vai ser gerado pelo SQL server.
+        //DTO para o PUT de clientes do CRM, com suas propriedades Id, nome, cpf, endereço e e-mail
+        public int Id { get; set; }
         public string Nome { get; set; } = "Saulo";
         public string Cpf { get; set; } = "081.307.556-45";
         public string Endereco { get; set; } = "Rua Ploomes, 1337, Pinheiros, São Paulo - SP";
