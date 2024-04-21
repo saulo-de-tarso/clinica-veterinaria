@@ -26,7 +26,7 @@ namespace ProjetoCRM.API.Controllers
             return Ok(await _clientesService.GetListaClientes());
         }
 
-        //GET para buscar a cliente por id, utilizando o método implantado no serviço de clientes
+        //GET para buscar o cliente por id, utilizando o método implantado no serviço de clientes
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceResponse<GetClienteDto>>> GetClientePorId(int id)
         {
@@ -48,6 +48,16 @@ namespace ProjetoCRM.API.Controllers
             if (response.Data is null)
                 return NotFound(response);
             return Ok(await _clientesService.AtualizarCliente(atualizarCliente));
+        }
+
+        //DELETE para deletar o cliente por id, utilizando o método implantado no serviço de clientes
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ServiceResponse<GetClienteDto>>> DeletarClientePorId(int id)
+        {
+            var response = await _clientesService.DeletarClientePorId(id);
+            if (response.Data is null)
+                return NotFound(response);
+            return Ok(response);
         }
     }
 }

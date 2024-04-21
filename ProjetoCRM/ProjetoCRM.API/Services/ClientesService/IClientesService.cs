@@ -17,5 +17,9 @@ namespace ProjetoCRM.API.Services.ClientesService
         //método para atualizar cliente
         Task<ServiceResponse<GetClienteDto>> AtualizarCliente(UpdateClienteDto atualizarCliente);
 
+        //método para remover cliente por seu id
+        Task<ServiceResponse<List<GetClienteDto>>> DeletarClientePorId(int id);
+
+
     }
 }

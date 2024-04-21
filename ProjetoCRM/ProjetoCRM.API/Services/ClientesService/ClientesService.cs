@@ -53,6 +53,7 @@ namespace ProjetoCRM.API.Services.ClientesService
         public async Task<ServiceResponse<GetClienteDto>> AtualizarCliente(UpdateClienteDto atualizarCliente)
         {
             var serviceResponse = new ServiceResponse<GetClienteDto>();
+            //try-catch com exceções caso o id do cliente não seja encontrado
             try
             {
                 
@@ -70,6 +71,31 @@ namespace ProjetoCRM.API.Services.ClientesService
                 serviceResponse.Message = ex.Message;
             }
             
+            return serviceResponse;
+        }
+
+        //método para deletar cliente pelo id
+        public async Task<ServiceResponse<List<GetClienteDto>>> DeletarClientePorId(int id)
+        {
+            var serviceResponse = new ServiceResponse<List<GetClienteDto>>();
+            //try-catch com exceções caso o id do cliente não seja encontrado
+            try
+            {
+
+                var cliente = clientes.FirstOrDefault(c => c.Id == id);
+                if (cliente is null)
+                    throw new Exception($"Cliente com Id {id} não foi encontrado");
+
+                clientes.Remove(cliente);
+
+                serviceResponse.Data = clientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToList();
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+            }
+
             return serviceResponse;
         }
     }
