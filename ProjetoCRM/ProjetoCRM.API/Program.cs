@@ -9,6 +9,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Builde para registrar o automapper
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 // Builder para registrar o cliente de serviços no programa
 builder.Services.AddScoped<IClientesService, ClientesService>();
 

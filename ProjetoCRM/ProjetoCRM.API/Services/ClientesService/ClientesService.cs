@@ -1,4 +1,6 @@
-﻿using ProjetoCRM.API.Models;
+﻿using AutoMapper;
+using ProjetoCRM.API.Dtos.Cliente;
+using ProjetoCRM.API.Models;
 
 namespace ProjetoCRM.API.Services.ClientesService
 {
@@ -11,31 +13,39 @@ namespace ProjetoCRM.API.Services.ClientesService
             new Clientes { Id = 1, Nome = "Paulo"}
         };
 
-        
-        //método para adicionar cliente
-        public async Task<ServiceResponse<List<Clientes>>> AdicionarCliente(Clientes novoCliente)
+        //cria um atributo privado para o automapper, para mapear os serviço pelos Dtos
+        private readonly IMapper _mapper;
+
+        //construtor para o serviço de clientes, utilizando o Imapper como parâmetro
+        public ClientesService(IMapper mapper)
         {
-            var serviceResponse = new ServiceResponse<List<Clientes>>();
-            clientes.Add(novoCliente);
-            serviceResponse.Data = clientes;
+            _mapper = mapper;
+        }
+
+        //método para adicionar cliente
+        public async Task<ServiceResponse<List<GetClientesDto>>> AdicionarCliente(AddClientesDto novoCliente)
+        {
+            var serviceResponse = new ServiceResponse<List<GetClientesDto>>();
+            clientes.Add(_mapper.Map<Clientes>(novoCliente));
+            serviceResponse.Data = clientes.Select(c => _mapper.Map<GetClientesDto>(c)).ToList();
             return serviceResponse;
         }
 
         //método para buscar um cliente específico por seu id
-        public async Task<ServiceResponse<Clientes>> GetClientePorId(int id)
+        public async Task<ServiceResponse<GetClientesDto>> GetClientePorId(int id)
         {
-            var serviceResponse = new ServiceResponse<Clientes>();
+            var serviceResponse = new ServiceResponse<GetClientesDto>();
             //busca o cliente com o Id
             var cliente = clientes.FirstOrDefault(c => c.Id == id);
-            serviceResponse.Data = cliente;
+            serviceResponse.Data = _mapper.Map<GetClientesDto>(cliente);
             return serviceResponse;
         }
 
         //método para buscar a lista de clientes
-        public async Task<ServiceResponse<List<Clientes>>> GetListaClientes()
+        public async Task<ServiceResponse<List<GetClientesDto>>> GetListaClientes()
         {
-            var serviceResponse = new ServiceResponse<List<Clientes>>();
-            serviceResponse.Data = clientes;
+            var serviceResponse = new ServiceResponse<List<GetClientesDto>>();
+            serviceResponse.Data = clientes.Select(c => _mapper.Map<GetClientesDto>(c)).ToList();
             return serviceResponse;
         }
     }
