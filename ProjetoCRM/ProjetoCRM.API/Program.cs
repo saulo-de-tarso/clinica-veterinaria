@@ -1,4 +1,9 @@
+global using Microsoft.EntityFrameworkCore;
 using ProjetoCRM.API.Services.ClientesService;
+using ProjetoCRM.API.Data;
+using ProjetoCRM.API.Models;
+using System;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +20,22 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 // Builder para registrar o cliente de serviços no programa
 builder.Services.AddScoped<IClientesService, ClientesService>();
 
+//Builder para conexão do SQL com plataforma azure
+var connection = String.Empty;
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddEnvironmentVariables().AddJsonFile("appsettings.Development.json");
+    connection = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
+}
+else
+{
+    connection = Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING");
+}
+
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(connection));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,5 +50,22 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+/*
+app.MapGet("/Clientes", (DataContext context) =>
+{
+    return context.Clientes.ToList();
+})
+.WithName("GetClientes")
+.WithOpenApi();
+
+app.MapPost("/Clientes", (Clientes cliente, DataContext context) =>
+{
+    context.Add(cliente);
+    context.SaveChanges();
+})
+.WithName("CreateCliente")
+.WithOpenApi();
+*/
 
 app.Run();
