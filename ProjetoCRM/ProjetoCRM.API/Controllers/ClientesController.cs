@@ -20,23 +20,23 @@ namespace ProjetoCRM.API.Controllers
 
         //GET para buscar a lista de clientes, utilizando o método implantado no serviço de clientes
         [HttpGet("ListaClientes")]
-        public ActionResult<List<Clientes>> ListaClientes()
+        public async Task<ActionResult<ServiceResponse<List<Clientes>>>> GetListaClientes()
         {
-            return Ok(_clientesService.GetListaClientes());
+            return Ok(await _clientesService.GetListaClientes());
         }
 
         //GET para buscar a cliente por id, utilizando o método implantado no serviço de clientes
         [HttpGet("{id}")]
-        public ActionResult<Clientes> BuscaClientePorId(int id)
+        public async Task<ActionResult<ServiceResponse<Clientes>>> GetClientePorId(int id)
         {
-            return Ok(_clientesService.GetClientePorId(id));
+            return Ok(await _clientesService.GetClientePorId(id));
         }
 
         //POST para adicionar novos clientes, utilizando o método implantado no serviço de clientes
         [HttpPost]
-        public ActionResult<List<Clientes>> AdicionarCliente(Clientes novoCliente)
+        public async Task<ActionResult<ServiceResponse<List<Clientes>>>> AdicionarCliente(Clientes novoCliente)
         {
-            return Ok(_clientesService.AdicionarCliente(novoCliente));
+            return Ok(await _clientesService.AdicionarCliente(novoCliente));
         }
     }
 }

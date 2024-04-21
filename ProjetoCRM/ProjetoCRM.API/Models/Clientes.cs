@@ -2,6 +2,7 @@
 {
     public class Clientes
     {
+        //Entidade de clientes do CRM, com suas propriedades Id, nome, cpf, endereço e e-mail
         public int Id { get; set; }
         public string Nome { get; set; } = "Saulo";
         public string Cpf { get; set; } = "081.307.556-45";

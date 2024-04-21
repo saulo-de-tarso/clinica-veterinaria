@@ -5,13 +5,13 @@ namespace ProjetoCRM.API.Services.ClientesService
     public interface IClientesService
     {
         //método para buscar a lista de clientes
-        List<Clientes> GetListaClientes();
+        Task<ServiceResponse<List<Clientes>>> GetListaClientes();
 
         //método para buscar um cliente específico por seu id
-        Clientes GetClientePorId(int id);
+        Task<ServiceResponse<Clientes>> GetClientePorId(int id);
 
         //método para adicionar cliente
-        List<Clientes> AdicionarCliente(Clientes novoCliente);
+        Task<ServiceResponse<List<Clientes>>> AdicionarCliente(Clientes novoCliente);
 
     }
 }

@@ -13,28 +13,30 @@ namespace ProjetoCRM.API.Services.ClientesService
 
         
         //método para adicionar cliente
-        public List<Clientes> AdicionarCliente(Clientes novoCliente)
+        public async Task<ServiceResponse<List<Clientes>>> AdicionarCliente(Clientes novoCliente)
         {
+            var serviceResponse = new ServiceResponse<List<Clientes>>();
             clientes.Add(novoCliente);
-            return clientes;
+            serviceResponse.Data = clientes;
+            return serviceResponse;
         }
 
         //método para buscar um cliente específico por seu id
-        public Clientes GetClientePorId(int id)
+        public async Task<ServiceResponse<Clientes>> GetClientePorId(int id)
         {
+            var serviceResponse = new ServiceResponse<Clientes>();
             //busca o cliente com o Id
             var cliente = clientes.FirstOrDefault(c => c.Id == id);
-            //se o cliente não for nulo, retorna o cliente
-            if (cliente is not null)
-                return cliente;
-            //se o id do cliente não existir, retorna uma exceção de cliente não encontrado.
-            throw new Exception("Cliente não encontrado.");
+            serviceResponse.Data = cliente;
+            return serviceResponse;
         }
 
         //método para buscar a lista de clientes
-        public List<Clientes> GetListaClientes()
+        public async Task<ServiceResponse<List<Clientes>>> GetListaClientes()
         {
-            return clientes;
+            var serviceResponse = new ServiceResponse<List<Clientes>>();
+            serviceResponse.Data = clientes;
+            return serviceResponse;
         }
     }
 }
