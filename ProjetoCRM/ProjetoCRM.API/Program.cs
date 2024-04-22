@@ -51,21 +51,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-/*
-app.MapGet("/Clientes", (DataContext context) =>
-{
-    return context.Clientes.ToList();
-})
-.WithName("GetClientes")
-.WithOpenApi();
-
-app.MapPost("/Clientes", (Clientes cliente, DataContext context) =>
-{
-    context.Add(cliente);
-    context.SaveChanges();
-})
-.WithName("CreateCliente")
-.WithOpenApi();*/
-
-
 app.Run();
