@@ -65,7 +65,7 @@ app.MapPost("/Clientes", (Clientes cliente, DataContext context) =>
     context.SaveChanges();
 })
 .WithName("CreateCliente")
-.WithOpenApi();
-*/
+.WithOpenApi();*/
+
 
 app.Run();

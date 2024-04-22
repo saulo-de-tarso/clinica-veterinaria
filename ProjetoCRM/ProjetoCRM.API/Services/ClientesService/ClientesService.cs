@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ProjetoCRM.API.Data;
 using ProjetoCRM.API.Dtos.Cliente;
 using ProjetoCRM.API.Models;
 
@@ -6,19 +7,17 @@ namespace ProjetoCRM.API.Services.ClientesService
 {
     public class ClientesService : IClientesService
     {
-        //método para gerar uma lista de clientes
-        private static List<Clientes> clientes = new List<Clientes>
-        {
-            new Clientes(),
-            new Clientes { Id = 1, Nome = "Paulo"}
-        };
-
+   
         //cria um atributo privado para o automapper, para mapear os serviço pelos Dtos
         private readonly IMapper _mapper;
 
-        //construtor para o serviço de clientes, utilizando o Imapper como parâmetro
-        public ClientesService(IMapper mapper)
+        //cria um atributo privado para o datacontext
+        private readonly DataContext _context;
+
+        //construtor para o serviço de clientes, utilizando o Imapper e DataContext como parâmetros
+        public ClientesService(IMapper mapper, DataContext context)
         {
+            _context = context;
             _mapper = mapper;
         }
 
@@ -26,8 +25,9 @@ namespace ProjetoCRM.API.Services.ClientesService
         public async Task<ServiceResponse<List<GetClienteDto>>> AdicionarCliente(AddClienteDto novoCliente)
         {
             var serviceResponse = new ServiceResponse<List<GetClienteDto>>();
-            clientes.Add(_mapper.Map<Clientes>(novoCliente));
-            serviceResponse.Data = clientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToList();
+            _context.Clientes.Add(_mapper.Map<Clientes>(novoCliente));
+            await _context.SaveChangesAsync();
+            serviceResponse.Data = _context.Clientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToList();
             return serviceResponse;
         }
 
@@ -36,8 +36,8 @@ namespace ProjetoCRM.API.Services.ClientesService
         {
             var serviceResponse = new ServiceResponse<GetClienteDto>();
             //busca o cliente com o Id
-            var cliente = clientes.FirstOrDefault(c => c.Id == id);
-            serviceResponse.Data = _mapper.Map<GetClienteDto>(cliente);
+            var dbCliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
+            serviceResponse.Data = _mapper.Map<GetClienteDto>(dbCliente);
             return serviceResponse;
         }
 
@@ -45,7 +45,8 @@ namespace ProjetoCRM.API.Services.ClientesService
         public async Task<ServiceResponse<List<GetClienteDto>>> GetListaClientes()
         {
             var serviceResponse = new ServiceResponse<List<GetClienteDto>>();
-            serviceResponse.Data = clientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToList();
+            var dbClientes = await _context.Clientes.ToListAsync();
+            serviceResponse.Data = dbClientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToList();
             return serviceResponse;
         }
 
@@ -57,11 +58,12 @@ namespace ProjetoCRM.API.Services.ClientesService
             try
             {
                 
-                var cliente = clientes.FirstOrDefault(c => c.Id == atualizarCliente.Id);
+                var cliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == atualizarCliente.Id);
                 if (cliente is null)
                     throw new Exception($"Cliente com Id {atualizarCliente.Id} não foi encontrado");
 
                 cliente = _mapper.Map<Clientes>(atualizarCliente);
+                await _context.SaveChangesAsync();
                 
                 serviceResponse.Data = _mapper.Map<GetClienteDto>(cliente);
             }
@@ -82,13 +84,14 @@ namespace ProjetoCRM.API.Services.ClientesService
             try
             {
 
-                var cliente = clientes.FirstOrDefault(c => c.Id == id);
+                var cliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
                 if (cliente is null)
                     throw new Exception($"Cliente com Id {id} não foi encontrado");
 
-                clientes.Remove(cliente);
+                _context.Clientes.Remove(cliente);
 
-                serviceResponse.Data = clientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToList();
+                await _context.SaveChangesAsync();
+                serviceResponse.Data = await _context.Clientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToListAsync();
             }
             catch (Exception ex)
             {
