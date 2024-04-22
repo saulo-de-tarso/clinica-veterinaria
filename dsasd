@@ -1,0 +1,59 @@
+[33mcommit 5feed9370b60caf8829c10c780e8b2d2d2a156df[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sun Apr 21 22:19:05 2024 -0300
+
+    WeatherForecast deletado
+
+[33mcommit 372dea364942fd4d36ed8623b5c776f99176eabe[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sun Apr 21 21:22:14 2024 -0300
+
+    Configurado datacontext pros métodos PUT e DELETE
+
+[33mcommit a0097d4679591252be4fd7800f19a673280f30aa[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sun Apr 21 19:35:18 2024 -0300
+
+    Criado e configurado datacontext e connection string
+
+[33mcommit 5502552df432d67e9b5a1e99e3a7166580af6123[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sun Apr 21 18:10:13 2024 -0300
+
+    Criado método DELETE para deletar clientes
+
+[33mcommit 502fcf92f886016c0c14b75851c87459bf56a338[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sun Apr 21 17:47:19 2024 -0300
+
+    Criado método PUT para atualizar clientes
+
+[33mcommit 4953319dd71827419234c4b9ef32b0e8ae5c5b5a[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sun Apr 21 16:35:24 2024 -0300
+
+    Adicionei Dtos de GET e POST para os clientes, e mapeei para a entidade de cliente com o automapper
+
+[33mcommit 44e994911413a4da989121a2fcc7f55754afa380[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sun Apr 21 14:45:16 2024 -0300
+
+    Adicionei tasks assíncronas e service response aos métodos
+
+[33mcommit f3761c818b8839113914a1bce010e7580fc9a494[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sun Apr 21 14:14:55 2024 -0300
+
+    Criei um projeto de CRM, com uma entidade cliente e seus controladores e serviços
+
+[33mcommit 2f5072787ef2ab01d6d927b35f8783dd69578a66[m
+Author: Saulo Campos <saulodtrc@gmail.com>
+Date:   Sat Apr 20 13:50:44 2024 -0300
+
+    Criada API com controlador de clientes retornando a frase 'Cliente criado', e as entidades clientes, produtos e vendas com seus atributos
+
+[33mcommit 2bca784e489c4a40f7ba8261be10abd55f46ea6a[m
+Author: Saulo Campos <97260136+saulo-de-tarso@users.noreply.github.com>
+Date:   Fri Apr 19 21:16:57 2024 -0300
+
+    Initial commit

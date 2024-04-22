@@ -30,7 +30,10 @@ namespace ProjetoCRM.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceResponse<GetClienteDto>>> GetClientePorId(int id)
         {
-            return Ok(await _clientesService.GetClientePorId(id));
+            var response = await _clientesService.GetClientePorId(id);
+            if (response.Data is null)
+                return NotFound(response);
+            return Ok(response);
         }
 
         //POST para adicionar novos clientes, utilizando o método implantado no serviço de clientes
@@ -47,11 +50,11 @@ namespace ProjetoCRM.API.Controllers
             var response = await _clientesService.AtualizarCliente(atualizarCliente);
             if (response.Data is null)
                 return NotFound(response);
-            return Ok(await _clientesService.AtualizarCliente(atualizarCliente));
+            return Ok(response);
         }
 
         //DELETE para deletar o cliente por id, utilizando o método implantado no serviço de clientes
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<ActionResult<ServiceResponse<GetClienteDto>>> DeletarClientePorId(int id)
         {
             var response = await _clientesService.DeletarClientePorId(id);

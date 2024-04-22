@@ -35,9 +35,20 @@ namespace ProjetoCRM.API.Services.ClientesService
         public async Task<ServiceResponse<GetClienteDto>> GetClientePorId(int id)
         {
             var serviceResponse = new ServiceResponse<GetClienteDto>();
-            //busca o cliente com o Id
-            var dbCliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
-            serviceResponse.Data = _mapper.Map<GetClienteDto>(dbCliente);
+
+            //try-catch com exceções caso o id do cliente não seja encontrado
+            try
+            {
+                var dbCliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
+                if (dbCliente is null)
+                    throw new Exception($"Cliente com Id {id} não foi encontrado");
+                serviceResponse.Data = _mapper.Map<GetClienteDto>(dbCliente);   
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+            }
             return serviceResponse;
         }
 
