@@ -12,7 +12,7 @@ namespace ProjetoCRM.API
         {
             CreateMap<Clientes, GetClienteDto>(); //Mapeia o getclientesdto baseado nos clientes
             CreateMap<AddClienteDto, Clientes>(); //Mapeia os clientes baseado no addclientesdto
-            CreateMap<UpdateClienteDto, Clientes>(); //Mapeia os clientes baseado no addclientesdto
+            CreateMap<UpdateClienteDto, Clientes>(); //Mapeia os clientes baseado no updateclientesdto
         }
     }
 }

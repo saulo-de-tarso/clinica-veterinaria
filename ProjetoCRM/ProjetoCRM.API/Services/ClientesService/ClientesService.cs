@@ -62,7 +62,7 @@ namespace ProjetoCRM.API.Services.ClientesService
                 if (cliente is null)
                     throw new Exception($"Cliente com Id {atualizarCliente.Id} não foi encontrado");
 
-                cliente = _mapper.Map<Clientes>(atualizarCliente);
+                _mapper.Map(atualizarCliente, cliente);
                 await _context.SaveChangesAsync();
                 
                 serviceResponse.Data = _mapper.Map<GetClienteDto>(cliente);
