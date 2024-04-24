@@ -11,11 +11,10 @@ Para este teste prático de C#, foi desenvolvida uma API conectada a um banco de
 -[Instruções para teste] (#instrucoes)
 
 ## Introdução
-A Super Hero API foi desenvovida para realizarmos alterações no banco de dados SQL da plataforma Super Hero CRM, através das operações CRUD (Criar, ler, atualizar e deletar).
+A Super Hero API foi desenvovida para realizar alterações no banco de dados SQL da plataforma Super Hero CRM, através das operações CRUD (Criar, Ler, Atualizar e Apagar).
 No banco de dados existe uma tabela de clientes, a qual possui as seguintes propriedades: Id, Nome, CPF, Endereço e E-mail.
 É possível buscar a lista de clientes ou um cliente específico por Id, assim com atualizar e deletar um cliente por Id.
-Cada operação retorna um JSON contendo os dados retornados pela requisição, se a requisição foi um sucesso, e uma mensagem caso a requisição falhe.
-A API e o banco de dados foram hospedados na Microsoft Azure.
+Cada operação retorna um JSON contendo os dados retornados pela requisição, se a requisição foi um sucesso ou não, e uma mensagem caso a requisição falhe.
 
 ## Endpoints
 
@@ -35,7 +34,7 @@ O Id é incrementado de automaticamente pelo SQL conforme os usuários são adic
 
 ### Dados do cliente por ID
 
-O usuário informa o Id do cliente e é retornado os dados desse cliente.
+O usuário informa o Id do cliente e são retornados os dados desse cliente.
 
 - Método HTTP: GET
 - Rota: api/Clientes/{id}
@@ -58,7 +57,7 @@ O usuário pode excluir um cliente da base de dados, informando o Id no corpo da
 - Retorna: Lista em formato JSON com todos os clientes cadastrados na base de dados e suas propriedades, atualizada sem o usuário informado.
 - Exceção: Se o Id do cliente não for encontrado, retorna uma mensagem informando o usuário.
 
-## Modelo de dados
+## Modelos de dados
 
 - Clientes
     - Id: Int
@@ -73,11 +72,11 @@ O usuário pode excluir um cliente da base de dados, informando o Id no corpo da
     - Success: bool
     - Message: string
 
-- Obs: o modelo de ServiceResponse é apenas para enviar informações ao front end. Caso a requisição falhe, informa uma mensagem ao usuário, e o atributo de sucesso vem como false. Do contrário, success = true e nenhuma mensagem é exibida.
+- Obs.: o modelo de ServiceResponse é utilizado apenas para enviar informações ao front end. Caso a requisição falhe, informa uma mensagem ao usuário, e o atributo de sucesso vem como false. Do contrário, success = true e nenhuma mensagem é exibida.
 
 ## Migração de dados
 
-A migração de dados foi code-first migration, utilizando o Entity Framework Core. Utilizando o modelo de clientes, foi criada uma tabela de clientes na base de dados do SQL Server.
+A migração de dados foi feita utilizando code-first migration pelo Entity Framework Core. Através do modelo de clientes desenvolvido no C#, foi criada uma tabela de clientes na base de dados do SQL Server.
 
 ## Instruções para teste
 
