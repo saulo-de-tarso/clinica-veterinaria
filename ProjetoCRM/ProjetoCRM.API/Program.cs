@@ -14,7 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Case Ploomes API", Version = "v1" });
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Super Hero API", Version = "v1" });
 });
 
 // Builde para registrar o automapper
@@ -36,7 +36,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Case Ploomes API V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Super Hero API V1");
     c.RoutePrefix = string.Empty;
 });
 
