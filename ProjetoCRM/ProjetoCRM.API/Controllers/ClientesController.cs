@@ -20,7 +20,7 @@ namespace ProjetoCRM.API.Controllers
         }
 
         //GET para buscar a lista de clientes, utilizando o método implantado no serviço de clientes
-        [HttpGet("ListaClientes")]
+        [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<GetClienteDto>>>> GetListaClientes()
         {
             return Ok(await _clientesService.GetListaClientes());
