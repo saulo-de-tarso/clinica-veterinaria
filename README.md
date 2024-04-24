@@ -64,8 +64,8 @@ O usuário pode excluir um cliente da base de dados, informando o Id no corpo da
 ## Modelos de dados
 
 - Clientes
-    - Id: Int
-    - Nome: String
+    - Id: int
+    - Nome: string
     - Cpf: string
     - Endereço: string
     - Email: string
