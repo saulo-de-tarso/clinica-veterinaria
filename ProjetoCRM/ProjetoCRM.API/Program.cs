@@ -33,12 +33,24 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
+
+
 app.UseSwagger();
-app.UseSwaggerUI(c =>
+
+if (app.Environment.IsDevelopment())
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Super Hero API V1");
-    c.RoutePrefix = string.Empty;
-});
+    app.UseSwaggerUI();
+}
+//Caso o ambiente não seja de desenvolvimento, retira o prefixo da rota (/swagger), para poder acessar o swagger diretamente na página da API
+else
+{
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Super Hero API V1");
+        c.RoutePrefix = string.Empty;
+    });
+}
+
 
 app.UseHttpsRedirection();
 

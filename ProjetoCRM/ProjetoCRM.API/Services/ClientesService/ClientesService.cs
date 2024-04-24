@@ -27,7 +27,7 @@ namespace ProjetoCRM.API.Services.ClientesService
             var serviceResponse = new ServiceResponse<List<GetClienteDto>>();
             _context.Clientes.Add(_mapper.Map<Clientes>(novoCliente));
             await _context.SaveChangesAsync();
-            serviceResponse.Data = _context.Clientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToList();
+            serviceResponse.Data = _context.Clientes.Select(c => _mapper.Map<GetClienteDto>(c)).ToList();           
             return serviceResponse;
         }
 

@@ -12,7 +12,7 @@ Para este teste prático de C#, foi desenvolvida uma API conectada a um banco de
 5. [Instruções para teste](#instruções-para-teste)
 
 ## Introdução
-A Super Hero API foi desenvovida para realizar alterações no banco de dados SQL da plataforma Super Hero CRM, através das operações CRUD (Criar, Ler, Atualizar e Apagar).
+A Super Hero API foi desenvolvida para realizar alterações no banco de dados SQL da plataforma Super Hero CRM, através das operações CRUD (Criar, Ler, Atualizar e Apagar).
 
 No banco de dados existe uma tabela de clientes, a qual possui as seguintes propriedades: Id, Nome, CPF, Endereço e E-mail.
 
@@ -28,10 +28,14 @@ Cada operação retorna um JSON contendo:
 ### Adicionar cliente
 
 O usuário informa dados de Nome, CPF, Endereço e E-mail, e a requisição armazena os dados no banco de dados.
-O Id é incrementado de automaticamente pelo SQL conforme os usuários são adicionados.
+O Id é incrementado automaticamente pelo SQL Server conforme os usuários são adicionados.
 
 - Método HTTP: POST
+- Rota: api/Clientes
 - Retorna: Lista em formato JSON com todos os clientes cadastrados na base de dados e suas propriedades, atualizada com o novo usuário inserido.
+- Exceções (Erro 400 - Bad Request):
+    - Todas as propriedades devem ser preenchidas (nome, CPF, endereço e e-mail).
+    - CPF e e-mail devem estar em formatos válidos.
 
 ### Lista de clientes
 
@@ -45,24 +49,30 @@ O usuário informa o Id do cliente e são retornados os dados desse cliente.
 
 - Método HTTP: GET
 - Rota: api/Clientes/{id}
+- Retorna: Dados do cliente requisitado.
 - Exceção: Se o Id do cliente não for encontrado, retorna uma mensagem informando o usuário.
 
 
 ### Atualizar cliente por ID
 
-O usuário pode atualizar os dados do cliente informando o Id no corpo da requisição e os demais dados como Nome, CPF, Endereço e E-mail, e a requisição atualiza os dados no banco de dados.
+O usuário pode atualizar os dados do cliente informando o Id no corpo da requisição e os demais dados como Nome, CPF, Endereço e E-mail, e a API atualiza os dados no banco de dados.
 
 - Método HTTP: PUT
+- Rota: api/Clientes
 - Retorna: Dados atualizados do cliente.
-- Exceção: Se o Id do cliente não for encontrado, retorna uma mensagem informando o usuário.
+- Exceções:
+    - Se o Id do cliente não for encontrado, retorna uma mensagem informando o usuário (Erro 404 - Not Found).
+    - Todas as propriedades devem ser preenchidas: nome, CPF, endereço e e-mail (Erro 400 - Bad Request).
+    - CPF e e-mail devem estar em formatos válidos (Erro 400 - Bad Request).
 
 ### Excluir cliente por ID
 
 O usuário pode excluir um cliente da base de dados, informando o Id no corpo da requisição.
 
 - Método HTTP: DELETE
+- Rota: api/Clientes
 - Retorna: Lista em formato JSON com todos os clientes cadastrados na base de dados e suas propriedades, atualizada sem o usuário informado.
-- Exceção: Se o Id do cliente não for encontrado, retorna uma mensagem informando o usuário.
+- Exceção: Se o Id do cliente não for encontrado, retorna uma mensagem informando o usuário (Erro 404 - Not Found).
 
 ## Modelos de dados
 
@@ -89,7 +99,7 @@ A migração de dados foi feita utilizando code-first migration pelo Entity Fram
 
 As operações CRUD podem ser realizadas pelo swagger.
 
-Clicando no [link 1](https://caseploomes-api.azurewebsites.net/index.html) é possível acessar o swagger da API, e clicando no [link 2](https://caseploomes-api.azurewebsites.net/api/clientes) é possível abrir o JSON da lista de clientes.
+Clicando no link 1 é possível acessar o swagger da API, e clicando no link 2 é possível abrir o JSON da lista de clientes.
 
 1. [Clique aqui para acessar o Swagger da API](https://caseploomes-api.azurewebsites.net/index.html)
 
