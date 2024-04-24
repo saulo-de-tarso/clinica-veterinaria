@@ -7,8 +7,9 @@ Para este teste prático de C#, foi desenvolvida uma API conectada a um banco de
 
 1. [Introdução](#introdução)    
 2. [Endpoints](#endpoints)   
-3. [Modelos de dados](#modelos-de-dados)    
-4. [Instruções para teste](#instruções-para-teste)
+3. [Modelos de dados](#modelos-de-dados)
+4. [Migração de dados](#migração-de-dados)    
+5. [Instruções para teste](#instruções-para-teste)
 
 ## Introdução
 A Super Hero API foi desenvovida para realizar alterações no banco de dados SQL da plataforma Super Hero CRM, através das operações CRUD (Criar, Ler, Atualizar e Apagar).
@@ -87,8 +88,9 @@ As operações CRUD podem ser realizadas pelo swagger.
 
 Clicando no [link 1](https://caseploomes-api.azurewebsites.net/api/clientes) é possível acessar o swagger da API, e clicando no [link 2](https://caseploomes-api.azurewebsites.net/api/clientes) é possível abrir o JSON da lista de clientes.
 
-[1. Clique aqui para acessar o Swagger da API](https://caseploomes-api.azurewebsites.net/api/clientes)
-[2. Clique aqui para acessar a lista de clientes](https://caseploomes-api.azurewebsites.net/api/clientes)
+1. [Clique aqui para acessar o Swagger da API](https://caseploomes-api.azurewebsites.net/api/clientes)
+
+2. [Clique aqui para acessar a lista de clientes](https://caseploomes-api.azurewebsites.net/api/clientes)
 
 
 
