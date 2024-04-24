@@ -5,15 +5,15 @@ Para este teste prático de C#, foi desenvolvida uma API conectada a um banco de
 
 ## Conteúdo
 
--[Introdução](#introducao)
--[Endpoints] (#endpoints)
--[Modelos] (#modelos)
--[Instruções para teste] (#instrucoes)
+-[Introdução](#introducao)    
+-[Endpoints] (#endpoints)  
+-[Modelos] (#modelos)  
+-[Instruções para teste] (#instrucoes)  
 
 ## Introdução
-A Super Hero API foi desenvovida para realizar alterações no banco de dados SQL da plataforma Super Hero CRM, através das operações CRUD (Criar, Ler, Atualizar e Apagar).
-No banco de dados existe uma tabela de clientes, a qual possui as seguintes propriedades: Id, Nome, CPF, Endereço e E-mail.
-É possível buscar a lista de clientes ou um cliente específico por Id, assim com atualizar e deletar um cliente por Id.
+A Super Hero API foi desenvovida para realizar alterações no banco de dados SQL da plataforma Super Hero CRM, através das operações CRUD (Criar, Ler, Atualizar e Apagar).    
+No banco de dados existe uma tabela de clientes, a qual possui as seguintes propriedades: Id, Nome, CPF, Endereço e E-mail.  
+É possível buscar a lista de clientes ou um cliente específico por Id, assim com atualizar e deletar um cliente por Id.  
 Cada operação retorna um JSON contendo os dados retornados pela requisição, se a requisição foi um sucesso ou não, e uma mensagem caso a requisição falhe.
 
 ## Endpoints
@@ -80,11 +80,14 @@ A migração de dados foi feita utilizando code-first migration pelo Entity Fram
 
 ## Instruções para teste
 
-Basta acessar o link https://caseploomes-api.azurewebsites.net/index.html para acessar o Swagger da API.
+As operações CRUD podem ser realizadas pelo swagger.
 
-Existem 4 clientes já criados no banco de dados: https://caseploomes-api.azurewebsites.net/api/clientes
+Clicando no link 1 é possível acessar o swagger da API, e clicando no link 2 é possível abrir o JSON da lista de clientes.
 
-As operações CRUD podem ser realizadas pelo swagger. 
+1. [Clique aqui para acessar o Swagger da API](https://caseploomes-api.azurewebsites.net/index.html)
+2. [Clique aqui para acessar a lista de clientes](https://caseploomes-api.azurewebsites.net/api/clientes)
+
+
 
 
     
