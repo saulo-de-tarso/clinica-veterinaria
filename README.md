@@ -16,9 +16,12 @@ A Super Hero API foi desenvovida para realizar alterações no banco de dados SQ
 
 No banco de dados existe uma tabela de clientes, a qual possui as seguintes propriedades: Id, Nome, CPF, Endereço e E-mail.
 
-É possível buscar a lista de clientes ou um cliente específico por Id, assim com atualizar e deletar um cliente por Id.
+É possível adicionar um novo cliente, buscar a lista de clientes ou um cliente específico por Id, assim como atualizar e apagar um cliente por Id.
 
-Cada operação retorna um JSON contendo os dados retornados pela requisição, se a requisição foi um sucesso ou não, e uma mensagem caso a requisição falhe.
+Cada operação retorna um JSON contendo:
+- Data: dados retornados pela requisição
+- Response: se a requisição foi um sucesso ou não
+- Message: mensagem caso a requisição falhe.
 
 ## Endpoints
 
