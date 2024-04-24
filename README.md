@@ -86,9 +86,9 @@ A migração de dados foi feita utilizando code-first migration pelo Entity Fram
 
 As operações CRUD podem ser realizadas pelo swagger.
 
-Clicando no [link 1](https://caseploomes-api.azurewebsites.net/api/clientes) é possível acessar o swagger da API, e clicando no [link 2](https://caseploomes-api.azurewebsites.net/api/clientes) é possível abrir o JSON da lista de clientes.
+Clicando no [link 1](https://caseploomes-api.azurewebsites.net/index.html) é possível acessar o swagger da API, e clicando no [link 2](https://caseploomes-api.azurewebsites.net/api/clientes) é possível abrir o JSON da lista de clientes.
 
-1. [Clique aqui para acessar o Swagger da API](https://caseploomes-api.azurewebsites.net/api/clientes)
+1. [Clique aqui para acessar o Swagger da API](https://caseploomes-api.azurewebsites.net/index.html)
 
 2. [Clique aqui para acessar a lista de clientes](https://caseploomes-api.azurewebsites.net/api/clientes)
 
